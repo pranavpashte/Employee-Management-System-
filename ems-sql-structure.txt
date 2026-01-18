@@ -1,0 +1,25 @@
+CREATE DATABASE ems_db;
+USE ems_db;
+CREATE TABLE admin (
+    admin_id INT PRIMARY KEY AUTO_INCREMENT,
+    email VARCHAR(100) UNIQUE,
+    password VARCHAR(100)
+);
+
+INSERT INTO admin (email, password)
+VALUES ('admin@gmail.com', 'admin123');
+
+CREATE TABLE department (
+    dept_id INT PRIMARY KEY AUTO_INCREMENT,
+    dept_name VARCHAR(100)
+);
+
+CREATE TABLE employee (
+    emp_id INT PRIMARY KEY AUTO_INCREMENT,
+    name VARCHAR(100),
+    email VARCHAR(100),
+    salary DOUBLE,
+    role VARCHAR(50),
+    dept_id INT,
+    FOREIGN KEY (dept_id) REFERENCES department(dept_id)
+);
